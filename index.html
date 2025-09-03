@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>✨実施者報酬一覧✨</title>
+    
+    <!-- Open Graph メタタグ -->
+    <meta property="og:title" content="✨実施者報酬一覧✨">
+    <meta property="og:description" content="実施者報酬の詳細情報。ZOOM案件、ECショップ、家電、MNP案件など各種案件の報酬体系を掲載。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-github-pages-url.com">
+    <meta property="og:image" content="https://your-github-pages-url.com/og-image.png">
+    
+    <!-- Twitter Card メタタグ -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="✨実施者報酬一覧✨">
+    <meta name="twitter:description" content="実施者報酬の詳細情報。ZOOM案件、ECショップ、家電、MNP案件など各種案件の報酬体系を掲載。">
+    <meta name="twitter:image" content="https://your-github-pages-url.com/og-image.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+            background: 
+                linear-gradient(rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.9)),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23334155" stroke-width="0.5" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="%23111827"/><rect width="100" height="100" fill="url(%23grid)"/><circle cx="20" cy="20" r="1" fill="%234f46e5" opacity="0.6"/><circle cx="80" cy="30" r="1.5" fill="%2306b6d4" opacity="0.4"/><circle cx="60" cy="70" r="1" fill="%2310b981" opacity="0.5"/><circle cx="30" cy="80" r="1.2" fill="%23f59e0b" opacity="0.4"/><rect x="40" y="10" width="20" height="2" fill="%236366f1" opacity="0.3"/><rect x="10" y="50" width="15" height="1.5" fill="%2306b6d4" opacity="0.4"/><rect x="70" y="60" width="25" height="1" fill="%2310b981" opacity="0.3"/></svg>');
+            background-size: cover;
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #60a5fa, #34d399, #fbbf24);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* 実施者報酬一覧のスタイル */
+        .rewards-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        .rewards-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .rewards-table th {
+            background: #ecf0f1;
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #bdc3c7;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .rewards-table td {
+            padding: 15px;
+            border: 1px solid #bdc3c7;
+            background: white;
+        }
+
+        .rewards-table tr:nth-child(even) td {
+            background: #f8f9fa;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #e74c3c;
+            text-align: right;
+        }
+
+        .note {
+            font-size: 12px;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        .highlight {
+            background: #fff3cd !important;
+        }
+
+        .footer-note {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            font-size: 14px;
+            color: #555;
+            border-radius: 8px;
+        }
+
+        .special-badge {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        .shot-badge {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        /* タブ機能のスタイル */
+        .tab-container {
+            margin-bottom: 20px;
+        }
+
+        .tab-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+
+        .tab-button {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            color: #495057;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .tab-button:hover {
+            background: #e9ecef;
+            border-color: #dee2e6;
+        }
+
+        .tab-button.active {
+            background: #3498db;
+            border-color: #3498db;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 10px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tab-content h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .tab-content p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .tab-content ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .tab-content li {
+            color: #555;
+            margin-bottom: 5px;
+            list-style: none;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            .sp-br { display: block; }
+            .price {
+                white-space: nowrap;
+                font-size: 0.8rem;
+            }
+            .rewards-table td {
+                padding: 10px 6px;
+            }
+            .tab-buttons {
+                gap: 3px;
+            }
+            .tab-button {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚔️サムライサロン⚔️ <br class="sp-br">実施者報酬一覧</h1>
+        </div>
+
+        <!-- 実施者報酬コンテンツ -->
+        <div class="rewards-section">
+            <div class="section">
+                <div class="section-title">🔍 ZOOM案件 <span class="special-badge">一部ストック✨</span></div>
+                
+                <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button" onclick="showTab('zoom-study')">勉強会</button>
+                        <button class="tab-button" onclick="showTab('zoom-monitor')">勉強会モニター</button>
+                        <button class="tab-button" onclick="showTab('zoom-undercover-offline')">覆面モニターオフライン</button>
+                        <button class="tab-button" onclick="showTab('zoom-undercover-online')">覆面モニターオンライン</button>
+                        <button class="tab-button" onclick="showTab('zoom-real-estate')">不動産モニター</button>
+                        <button class="tab-button" onclick="showTab('zoom-house')">戸建モニター</button>
+                    </div>
+
+                    <div id="zoom-study" class="tab-content">
+                        <h4>📚 勉強会</h4>
+                        <p><strong>報酬:</strong> 2,000円/月</p>
+                        <p><strong>内容:</strong></p>
+                        <ul>
+                            <li>オンライン勉強会への参加</li>
+                            <li>参加費用は1,000円（クレカ･デビッド可）</li>
+                            <li>参加条件は月に2回以上参加できる方</li>
+                            <li>月最大4回の継続案件</li>
+                            <li>顔出しなし音声なし、リモートで実施可能</li>
+                            <li>報酬発生は月末締め/翌々月の5日払い</li>
+                            <li>1回あたりの報酬=500円</li>
+                        </ul>
+                    </div>
+
+                    <div id="zoom-monitor" class="tab-content">
+                        <h4>👁️ 勉強会モニター</h4>
+                        <p><strong>報酬:</strong> 6,000円/月</p>
+                        <p><strong>内容:</strong></p>
+                        <ul>
+                            <li>Zoomを利用したオンラインモニターへの参加</li>
+                            <li>カメラON必須</li>
+                            <li>お話を適切にお聞きいただける方</li>
+                            <li>途中で回線が切断されないこと</li>
+                            <li>参加費用なし</li>
+                            <li>報酬発生＝実施後約1.5ヶ月</li>
+                            <li>1回あたりの報酬1,500〜2,000円</li>
+                            <li>月に3〜4回実施可能</li>
+                        </ul>
+                    </div>
+
+                    <div id="zoom-undercover-offline" class="tab-content">
+                        <h4>🕵️ 覆面モニターオフライン</h4>
+                        <p><strong>報酬:</strong> 30,000円</p>
+                        <p><strong>内容:</strong></p>
+                        <ul>
+                            <li>参加条件＝全国にお住まいの男女</li>
+                            <li>指定の美容サロン(脱毛、薄毛サロンなど)で実施</li>
+                            <li>所要時間は1時間程度</li>
+                            <li>実際ある店舗へ伺いお話を聞く（契約有無は問わない）</li>
+                            <li>最大20件まで実施可能</li>
+                            <li>1件あたりの報酬=1,500円</li>
+                            <li>報酬発生時期=実施後1.5〜2ヶ月</li>
+                        </ul>
+                    </div>
+
+                    <div id="zoom-undercover-online" class="tab-content">
+                        <h4>💻 覆面モニターオンライン</h4>
+                        <p><strong>報酬:</strong> 10,000円</p>
+                        <p><strong>内容:</strong></p>
+                        <ul>
+                            <li>参加条件＝全国にお住まいの男女</li>
+                            <li>Zoomでの実施</li>
+                            <li>所要時間は1時間程度</li>
+                            <li>最大10件まで実施可能</li>
+                            <li>1件あたりの報酬=1,000円</li>
+                            <li>報酬発生時期=実施後1.5〜2ヶ月</li>
+                        </ul>
+                    </div>
+
+                    <div id="zoom-real-estate" class="tab-content">
+                        <h4>🏢 不動産モニター</h4>
+                        <p><strong>報酬:</strong> 4,000円（2軒分実施の場合、皆様2軒行う方が多いです）</p>
+                        <p><strong>内容:</strong></p>
+                        <ul>
+                            <li>参加条件=20歳以上、実家･持ち家をお持ちの方</li>
+                            <li>現地査定なし、机上管理査定のみ</li>
+                            <li>対象サイトで過去に申し込みをしていない方</li>
+                            <li>不動産担当者様と電話面談</li>
+                            <li>※希望者へ初回概要説明面談サポートあり</li>
+                            <li>所要時間　10分/件</li>
+                            <li>報酬1軒あたり=2,000円</li>
+                            <li>報酬発生時期=申し込み月の翌々月10日</li>
+                            <li>例）7月申請、9月10日にお振込</li>
+                        </ul>
+                    </div>
+
+                    <div id="zoom-house" class="tab-content">
+                        <h4>🏠 戸建モニター</h4>
+                        <p><strong>報酬:</strong> 3,500円</p>
+                        <p><strong>内容:</strong></p>
+                        <ul>
+                            <li>参加条件=20歳以上</li>
+                            <li>対象サイトで過去に申し込みをしていない方</li>
+                            <li>ハウスメーカー様とお電話 or Zoomでの対応です</li>
+                            <li>※希望者へ初回概要説明面談サポートあり</li>
+                            <li>所要時間　30分/1社</li>
+                            <li>報酬=3,500円</li>
+                            <li>報酬発生時期=申し込み月の翌々月10日</li>
+                            <li>例）7月申請、9月10日にお振込</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">🛒 ECショップ <span class="special-badge">ストック✨</span></div>
+                
+                <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button" onclick="showTab('ec-shop')">ECショップ案件</button>
+                    </div>
+
+                    <div id="ec-shop" class="tab-content">
+                        <h4>🛒 ECショップ案件</h4>
+                        <p><strong>報酬:</strong> 20,000円/月</p>
+                        <p><strong>内容:</strong></p>
+                        <ul>
+                            <li>参加条件=25歳以上のフリーランス/個人事業主</li>
+                            <li>過去に楽天ショップを開設していないこと</li>
+                            <li>指定の銀行を開設できること（すでにお持ちの方は未使用であること）</li>
+                            <li>開業届の届出が可能であること※既に開業届を申請されている方は追加で必要項目を申請可能な方）</li>
+                            <li>テキスト説明、資料説明あり</li>
+                            <li>開設するショップは大手ECの楽天、au pay、yahoo、ヤフオクの4つ</li>
+                            <li>報酬発生時期=ショップ運営開始翌月より報酬発生</li>
+                            <li>報酬=5,000円/1shop</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">🏠 家電 <span class="shot-badge">ショット⭐️</span></div>
+                
+                <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button" onclick="showTab('appliance')">家電案件</button>
+                    </div>
+
+                    <div id="appliance" class="tab-content">
+                        <h4>🏠 家電案件</h4>
+                        <p><strong>報酬:</strong> 15,000円/日</p>
+                        <p><strong>内容:</strong></p>
+                        <ul>
+                            <li>参加条件=お電話でヒアリングを行い参加可否判断（約10分）</li>
+                            <li>実施日の調整</li>
+                            <li>実施当日は安心の担当者サポート付き</li>
+                            <li>指定商品を購入後、商品発送</li>
+                            <li>報酬例）1店舗目2,500、2店舗目4,000、3店舗目5,000</li>
+                            <li>合計11,500</li>
+                            <li>報酬発生時期=商品到着後、最短翌日〜3日以内</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">📱 MNP案件 <span class="shot-badge">ショット⭐️</span></div>
+                
+                <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button" onclick="showTab('mnp-kanto')">関東</button>
+                        <button class="tab-button" onclick="showTab('mnp-kansai')">関西</button>
+                        <button class="tab-button" onclick="showTab('mnp-nagoya')">名古屋</button>
+                        <button class="tab-button" onclick="showTab('mnp-national')">全国</button>
+                        <button class="tab-button" onclick="showTab('mnp-okinawa')">沖縄</button>
+                    </div>
+
+                    <div id="mnp-kanto" class="tab-content">
+                        <h4>🏙️ 関東 MNP案件</h4>
+                        <p><strong>報酬:</strong> 20,000円〜65,000円/日　（実施時期、件数により変動あり）</p>
+                        <p><strong>内容:</strong></p>
+                        <ul>
+                            <li>⚪︎参加条件=20歳以上</li>
+                            <li>⚪︎対象地域=全国</li>
+                            <li>⚪︎実施地域= 東京/神奈川/埼玉いずれか</li>
+                            <li>※時期により茨城・栃木での実施もあり</li>
+                            <li>⚪︎同行=あり</li>
+                            <li>⚪︎交通費上限=20,000円</li>
+                            <li>⚪︎通信費/事務手数料/端末代=業者負担</li>
+                            <li>⚪︎ポイント</li>
+                            <li>年間複数回実施可能</li>
+                            <li>⚪︎注意</li>
+                            <li>火/水/木で実施する方は回線数減少の可能性あり</li>
+                            <li>⚪︎報酬=即日お渡し</li>
+                        </ul>
+                    </div>
+
+                    <div id="mnp-kansai" class="tab-content">
+                        <h4>🏯 関西 MNP案件</h4>
+                        <p><strong>報酬:</strong> 20,000円〜65,000円/日　（実施時期、件数により変動あり）</p>
+                        <p><strong>内容:</strong></p>
+                        <ul>
+                            <li>⚪︎参加条件=20歳以上</li>
+                            <li>⚪︎対象地域=全国</li>
+                            <li>⚪︎実施地域= 兵庫/大阪/京都いずれか</li>
+                            <li>⚪︎同行=あり</li>
+                            <li>⚪︎交通費上限=20,000円</li>
+                            <li>⚪︎通信費/事務手数料/端末代=業者負担</li>
+                            <li>⚪︎ポイント</li>
+                            <li>年間複数回実施可能</li>
+                            <li>⚪︎注意</li>
+                            <li>火/水/木で実施する方は回線数減少の可能性あり</li>
+                            <li>⚪︎報酬=即日お渡し</li>
+                        </ul>
+                    </div>
+
+                    <div id="mnp-nagoya" class="tab-content">
+                        <h4>🏛️ 名古屋 MNP案件</h4>
+                        <p><strong>報酬:</strong> 20,000円〜65,000円/日　（実施時期、件数により変動あり）</p>
+                        <p><strong>内容:</strong></p>
+                        <ul>
+                            <li>⚪︎参加条件=20歳以上</li>
+                            <li>⚪︎対象地域=全国</li>
+                            <li>⚪︎実施地域= 名古屋</li>
+                            <li>⚪︎同行=あり</li>
+                            <li>⚪︎交通費上限=20,000円</li>
+                            <li>⚪︎通信費/事務手数料/端末代=業者負担</li>
+                            <li>⚪︎ポイント</li>
+                            <li>年間複数回実施可能</li>
+                            <li>⚪︎対応=土日のみ</li>
+                            <li>⚪︎報酬=即日お渡し</li>
+                        </ul>
+                    </div>
+
+                    <div id="mnp-national" class="tab-content">
+                        <h4>🗺️ 全国 MNP案件</h4>
+                        <p><strong>報酬:</strong> 20,000円〜60,000円/日　（実施時期、件数により変動あり）</p>
+                        <p><strong>内容:</strong></p>
+                        <ul>
+                            <li>⚪︎参加条件=20歳以上</li>
+                            <li>⚪︎対象地域=沖縄以外のお住まいの地域</li>
+                            <li>⚪︎実施地域= 全国</li>
+                            <li>⚪︎同行=なし</li>
+                            <li>⚪︎交通費上限=20,000円</li>
+                            <li>⚪︎通信費/事務手数料/端末代=業者負担</li>
+                            <li>⚪︎ポイント</li>
+                            <li>年間複数回実施可能</li>
+                            <li>⚪︎対応=土日のみ</li>
+                            <li>⚪︎報酬</li>
+                            <li>実施後端末を発送いただき到着後のお振込</li>
+                        </ul>
+                    </div>
+
+                    <div id="mnp-okinawa" class="tab-content">
+                        <h4>🏝️ 沖縄 MNP案件</h4>
+                        <p><strong>報酬:</strong> 17,500円〜35,000円/日　（実施時期、件数により変動あり）</p>
+                        <p><strong>内容:</strong></p>
+                        <ul>
+                            <li>⚪︎参加条件=20歳以上</li>
+                            <li>⚪︎対象地域=沖縄</li>
+                            <li>⚪︎実施地域= 沖縄本島</li>
+                            <li>※近くに実施場所がない場合は【片道2時間圏内】でのご案内</li>
+                            <li>⚪︎同行=なし</li>
+                            <li>⚪︎交通費上限=10,000円</li>
+                            <li>⚪︎通信費/事務手数料/端末代=業者負担</li>
+                            <li>⚪︎ポイント</li>
+                            <li>年間複数回実施可能</li>
+                            <li>⚪︎対応</li>
+                            <li>土日のみ</li>
+                            <li>⚪︎報酬</li>
+                            <li>実施後端末を発送いただき到着後のお振込</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="section">
+                <div class="section-title">⌚ 日当保証ロレックス <span class="shot-badge">ショット⭐️</span></div>
+                
+                <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button" onclick="showTab('rolex-daily')">日当保証ロレックス</button>
+                    </div>
+
+                    <div id="rolex-daily" class="tab-content">
+                        <h4>⌚ 日当保証ロレックス</h4>
+                        <div style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; padding: 15px; margin-bottom: 15px;">
+                            <p style="margin: 0; color: #856404; font-weight: bold;">👤 注意:男性のみ参加可能</p>
+                        </div>
+                        <p><strong>日当保証:</strong> 1,500円〜3,000円/日</p>
+                        <p><strong>購入完了時:</strong> 400,000円〜800,000円</p>
+                        <p><strong>内容:</strong></p>
+                        <ul>
+                            <li>参加条件=年齢制限なし、クレカ or デビッドカード必須</li>
+                            <li>対象/実施地域=東京/神奈川 2県に出向ける方、埼玉の場合/大宮+都内3店舗 or 都内4店舗回れる方</li>
+                            <li>日当保証報酬=1,500円</li>
+                            <li>購入成功報酬=最高400,000円（購入モデルにより変動）</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">💍 日当保証ゴローズ <span class="shot-badge">ショット⭐️</span></div>
+                
+                <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button" onclick="showTab('goros-daily')">日当保証ゴローズ</button>
+                    </div>
+
+                    <div id="goros-daily" class="tab-content">
+                        <h4>💍 日当保証ゴローズ　2025年9月開始</h4>
+                        <p><strong>日当保証:</strong> 1,500円〜3,000円/日</p>
+                        <p><strong>購入完了時:</strong> 15,000円〜30,000円</p>
+                        <p><strong>内容:</strong></p>
+                        <ul>
+                            <li>参加条件=20歳以上50歳以下、10:00〜20:30まで予定を確保できる方</li>
+                            <li>対象地域=身分証住所が関東圏の方</li>
+                            <li>実施地域=原宿</li>
+                            <li>日当保証報酬=1,500円</li>
+                            <li>購入成功報酬=最高15,000円（購入モデルにより変動）</li>
+                            <li>原宿の事務所へ集合しスタート、当日の作業終了後は原宿事務所に戻り必要手続きを経て解散</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">⌚ 時給保証ロレックス <span class="shot-badge">ショット⭐️</span></div>
+                
+                <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button" onclick="showTab('rolex-hourly')">時給保証ロレックス</button>
+                    </div>
+
+                    <div id="rolex-hourly" class="tab-content">
+                        <h4>⌚ 時給保証ロレックス</h4>
+                        <ul>
+                            <li><strong>時給保証</strong></li>
+                            <li>購入出来なかった場合 900円〜1,800円/1時間</li>
+                            <li>購入出来た場合 1,150円〜2,300円/1時間</li>
+                            <li><strong>完了報酬</strong></li>
+                            <li>購入完了報酬: 2,500〜5,000円</li>
+                            <li>⚪︎参加条件</li>
+                            <li>①20〜65歳</li>
+                            <li>②クレカ or デビッドカードをお持ちの方</li>
+                            <li>③運転免許証か顔付き身分証をお持ちの方</li>
+                            <li>⚪︎実施地域</li>
+                            <li>ロレックスがある店舗ならどこでも実施可</li>
+                            <li>※住んでいる地域に店舗がない場合、交通費支給で近隣の都道府県で実施可能です</li>
+                            <li>⚪︎交通費</li>
+                            <li>交通費支給あり</li>
+                            <li>⚪︎ポイント</li>
+                            <li>3回以内で購入できる確率大</li>
+                            <li>⚪︎作業時間</li>
+                            <li>平均3時間程度</li>
+                            <li>⚪︎日当報酬/購入成功報酬のお渡し</li>
+                            <li>当日支給</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">👩 女性限定アフィリエイト <span class="shot-badge">ショット⭐️</span></div>
+                
+                <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button" onclick="showTab('female-affiliate')">女性限定アフィリエイト</button>
+                    </div>
+
+                    <div id="female-affiliate" class="tab-content">
+                        <h4>👩 女性限定アフィリエイト</h4>
+                        <p><strong>報酬:</strong> 1,500円/3件完了</p>
+                        <p><strong>内容:</strong></p>
+                        <ul>
+                            <li>参加条件=指定されたサイトの登録がない女性</li>
+                            <li>1件完了でも報酬が支払われます</li>
+                            <li>1サイト登録は約5分程度</li>
+                            <li>登録のみなので手早く完了することが出来ます</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">🏦 口座開設案件 <span class="shot-badge">ショット⭐️</span></div>
+                
+                <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button" onclick="showTab('account-opening')">口座開設案件</button>
+                    </div>
+
+                    <div id="account-opening" class="tab-content">
+                        <h4>🏦 口座開設案件</h4>
+                        <p><strong>報酬:</strong> 2,250円/全て完了した場合</p>
+                        <p><strong>内容:</strong></p>
+                        <ul>
+                            <li>⚪︎参加条件</li>
+                            <li>①指定の銀行口座を開設したことがない方</li>
+                            <li>※Oliveのみ詳細条件あり</li>
+                            <li>⚪︎実施方法</li>
+                            <li>指定のリンクから開設手続き　（所要5分/1件あたり）</li>
+                            <li>※希望者に初回案件概要説明面談サポートあり</li>
+                            <li>⚪︎開設を行う銀行</li>
+                            <li>①SBI　　②ALTERNA　　③三井住友</li>
+                            <li>⚪︎報酬</li>
+                            <li>①SBI 500円</li>
+                            <li>②ALTERNA 750円</li>
+                            <li>③三井住友 1,000円</li>
+                            <li>⚪︎報酬発生時期</li>
+                            <li>月末締め、翌々月10日払い</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">🏠 リーブ21案件 <span class="shot-badge">ショット⭐️</span></div>
+                
+                <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button" onclick="showTab('leopalace21')">リーブ21案件</button>
+                    </div>
+
+                    <div id="leopalace21" class="tab-content">
+                        <h4>🏠 リーブ21案件</h4>
+                        <p><strong>報酬:</strong></p>
+                        <ul style="list-style: none; padding-left: 0;">
+                            <li>🙋‍♂️ 男性の方: 6,500円</li>
+                            <li>🙋‍♀️ 女性の方: 5,500円</li>
+                        </ul>
+                        <p><strong>内容:</strong></p>
+                        <ul>
+                            <li>⚪︎参加条件</li>
+                            <li>リーブ21のご利用が初めての方</li>
+                            <li>⚪︎対象エリア</li>
+                            <li>北海道、東北、東京、関東、中部、北陸</li>
+                            <li>東海、関西、中国、四国、九州　ご在住の方</li>
+                            <li>⚪︎募集年齢</li>
+                            <li>20代〜50代の方　※40〜50代の方優遇</li>
+                            <li>⚪︎作業内容</li>
+                            <li>①指定のリンクから体験プランの申し込み</li>
+                            <li>②カスタマーセンターと電話で日程調整</li>
+                            <li>③店舗へ来店しカウンセリングと施術を受ける（所要時間約2時間）</li>
+                            <li>⚪︎準備</li>
+                            <li>来店時、自然に抜けた髪の毛を15本程度持参</li>
+                            <li>⚪︎費用</li>
+                            <li>クレジット払い9,000円、店頭払い9,800円</li>
+                            <li>⚪︎報酬発生時期</li>
+                            <li>月末締め、翌々月10日払い</li>
+                            <li><strong>✨ オススメポイント:</strong> 通常価格よりお得に施術が受けられます！</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">💻 オンラインモニター案件 <span class="shot-badge">ショット⭐️</span></div>
+                
+                <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button" onclick="showTab('online-monitor')">オンラインモニター案件</button>
+                    </div>
+
+                    <div id="online-monitor" class="tab-content">
+                        <h4>💻 オンラインモニター案件</h4>
+                        <p><strong>報酬:</strong> 16,000円/最大実施　（細かい単価は下記参照）</p>
+                        <p><strong>内容:</strong></p>
+                        <ul>
+                            <li>⚪︎参加条件</li>
+                            <li>①20歳以上</li>
+                            <li>②対象サイトで過去に申し込みをしていない方</li>
+                            <li>⚪︎実施作業</li>
+                            <li>①指定のリンクから申し込み手続き</li>
+                            <li>②担当者と面談</li>
+                            <li>※希望者には初回案件概要説明面談サポートあり</li>
+                            <li>⚪︎報酬単価</li>
+                            <li>手間なく簡単な飲食店投資　3,000円</li>
+                            <li>パルシステム　1,000円</li>
+                            <li>スマートクラン　1,500円</li>
+                            <li>NISA相談ナビ　1,500円</li>
+                            <li>保険マンモス　2,000円</li>
+                            <li>資産運用ナビ　2,000円</li>
+                            <li>お金のみらいマップ　2,000円</li>
+                            <li>タウンライフ　3,000円</li>
+                            <li>⚪︎報酬発生時期</li>
+                            <li>月末締め、翌々月10日払い</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">📈 FX口座開設案件 <span class="shot-badge">ショット⭐️</span></div>
+                
+                <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button" onclick="showTab('fx-account')">FX口座開設案件</button>
+                    </div>
+
+                    <div id="fx-account" class="tab-content">
+                        <h4>📈 FX口座開設案件</h4>
+                        <p><strong>報酬:</strong> 1.5〜2.5万円　※開設数により変動</p>
+                        <p><strong>内容:</strong></p>
+                        <ul>
+                            <li>参加条件=20歳以上、自宅に郵送物が届いても問題ない方、同じ条件で未実施の方</li>
+                            <li>対象エリア=全国</li>
+                            <li>作業内容=</li>
+                            <li>①ヒアリングシート回答</li>
+                            <li>②Zoom面談、詳細説明を受講する</li>
+                            <li>③FX口座開設（登録代行可能）</li>
+                            <li>④運用</li>
+                            <li>⑤報酬受け取り</li>
+                            <li>報酬発生時期=開設または運用終了後にお振込</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-note">
+                <strong>注意事項：</strong><br>
+                • 案件により条件や報酬金額の変動がある場合があります<br>
+                • 詳細はDiscordまたは担当者より各案件の説明をご確認ください<br>
+                • 新規でリリースされた案件は追加表示されます
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            // 同じセクション内のすべてのタブコンテンツを非表示にする
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // 同じセクション内のすべてのタブボタンを非アクティブにする
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // 選択されたタブコンテンツを表示する
+            const selectedContent = document.getElementById(tabId);
+            if (selectedContent) {
+                selectedContent.classList.add('active');
+            }
+
+            // クリックされたボタンをアクティブにする
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html> 
